@@ -37,15 +37,10 @@ get_job_dslfiles() {
     fi
     while IFS='' read -r repo || [[ -n "$repo" ]]; do
 
-      # To speed up grabbing of jobdsl files in bitbucket (github doesnt support archive!!)
-      if [[ "$repo" = *"bitbucket.org"* ]]; then
-        repo=$(echo "${repo}" | tr ":" "/")
-        git archive --remote="ssh://git@${repo}.git" HEAD "${repo##*/}.jobdsl" | tar xvf - -C "${JOBDSL_DIR}"
-      else
-        git clone -n --depth 1 "git@${repo}" "${TEMP_REPOS_DIR}/${repo#*/}"
-        (cd "${TEMP_REPOS_DIR}/${repo#*/}" && git checkout HEAD "${repo#*/}.jobdsl")
-        mv -v "${TEMP_REPOS_DIR}/${repo#*/}/${repo#*/}.jobdsl" "${JOBDSL_DIR}"
-      fi
+        # To speed up grabbing of jobdsl files in bitbucket (github doesnt support archive!!)
+        git clone -n --depth 1 "${repo}.git" "${TEMP_REPOS_DIR}/${repo##*/}"
+        (cd "${TEMP_REPOS_DIR}/${repo##*/}" && git checkout HEAD "${repo##*/}.jobdsl")
+        mv -v "${TEMP_REPOS_DIR}/${repo##*/}/${repo##*/}.jobdsl" "${JOBDSL_DIR}"
     done < "${REPOS_FILE}"
   else
     echo "${REPOS_FILE} does not exist, this should be mounted in"
