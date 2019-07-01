@@ -43,7 +43,8 @@ dslScriptLoader.jobs.each { e -> println e.jobName }
 dslScriptLoader.views.each { e -> println e.name }
 
 //run the seed job
-def job = Hudson.instance.getJob('seed')
+println "Running load jobs first time...."
+def job = Hudson.instance.getJob('load-jobs')
 def anotherBuild
 try {
     def future = job.scheduleBuild2(0)

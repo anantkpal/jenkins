@@ -35,5 +35,3 @@ RUN apk --no-cache add su-exec docker groff python py-pip gettext procps jq && \
 RUN cd /tmp && \
     wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin
-
-USER jenkins
