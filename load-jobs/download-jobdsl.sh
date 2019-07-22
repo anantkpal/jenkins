@@ -6,12 +6,12 @@ set -euo pipefail
 # Defaults
 JENKINS_HOME="/var/jenkins_home"
 JOBDSL_DIR="${JENKINS_HOME}/jobdsl"
-REPOS_FILE="${JENKINS_HOME}/repo-configurations/${ENV_NAME}/repos.txt"
+REPOS_FILE="${JENKINS_HOME}/repo-configurations/${ENV_NAME}.txt"
 TEMP_REPOS_DIR="/tmp/repos"
 
 cd "${JENKINS_HOME}"
 rm -rf repo-configurations
-git clone ${REPO_GIT_REPO} repo-configurations
+git clone ${REPO_LIST_GIT_URI} repo-configurations
 
 get_job_dslfiles() {
 

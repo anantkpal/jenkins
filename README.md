@@ -11,7 +11,7 @@ docker build --no-cache . -t anantkpal/jenkins
 `repo-url` should contain folder with `env` name and should contain file `repos.txt`
 
 ```
-docker run -p 80:8080 -e JENKINS_USER=admin -e JENKINS_PASS=admin -e REPO_GIT_REPO=<repo-url> -e ENV_NAME=dev anantkpal/jenkins
+docker run -p 80:8080 -e JENKINS_USER=admin -e JENKINS_PASS=admin -e REPO_LIST_GIT_URI=<repo-url> -e ENV_NAME=dev anantkpal/jenkins
 ```
 
 
