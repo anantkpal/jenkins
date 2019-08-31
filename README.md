@@ -17,4 +17,4 @@ docker run -p 80:8080 -e JENKINS_USER=admin -e JENKINS_PASS=admin -e REPO_LIST_G
 
 ## Thanks to
 
-Inspired by https://github.com/microdc/k8s-jenkins
+Inspired by https://github.com/microdc/auto-jenkins
